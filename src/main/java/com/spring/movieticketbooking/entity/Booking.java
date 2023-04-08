@@ -1,39 +1,52 @@
 package com.spring.movieticketbooking.entity;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@Setter
+@Setter   
 @Data
 @Entity
 public class Booking {
-	
-	
 	@Id
+	@Column(name="booking_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	int bookingId;
+	
+	@Column(name="customer_id")
+	String customerId;
+	
 	@ManyToOne
-	private User user;
-	@ManyToOne
-	private Movie movie;
-	@ManyToOne
-	private Theatre theater;
-	@Column
-	private String seats;
-	@Column(name = "booking_date")
-	private LocalDate bookingDate;
-}              
+	@JoinColumn(name = "show_id")
+	private Shows show;
+	
+	@Column(name="booking_date")
+	Date bookingDate;
+	
+	@Min(100)@Max(1000)
+	@Column(name="total_amount")
+	Double totalAmount;
+	
+	@Column(name="payment_method")
+	String paymentMethod;
+	
+	@Column(name="seat_no")
+	int seatNo;
+
+}

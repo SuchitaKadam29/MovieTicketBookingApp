@@ -1,13 +1,9 @@
 package com.spring.movieticketbooking.entity;
 
-import java.time.LocalDate;
-
 import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -21,15 +17,16 @@ import lombok.Setter;
 @Data
 @Entity
 public class Movie {
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
-	@Column
-	private String title;
-	@Column
-	private String genre;
-	@Column(name = "release_date")
-	private LocalDate releaseDate;
+	@Column(name="movie_id")
+	int movieId;
+	@Column(name="movie_title")
+	String movieTitle;
+	String genre;
+	String director;
+	int duration;
+	double rating;
+    
 
 }
+

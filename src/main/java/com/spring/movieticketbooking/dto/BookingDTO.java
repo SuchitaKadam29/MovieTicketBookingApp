@@ -1,24 +1,15 @@
 package com.spring.movieticketbooking.dto;
 
-import java.time.LocalDate;
-
-import com.spring.movieticketbooking.entity.Movie;
-import com.spring.movieticketbooking.entity.Theatre;
-import com.spring.movieticketbooking.entity.User;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class BookingDTO {
-	
-	private Long id;
-    private User user;   
-    private Movie movie;   
-    private Theatre theater;
-    private String seats;
-    private LocalDate bookingDate;
-    
-
+	int showId;
+	String paymentMethod;
+	int seatNo;
 
 }

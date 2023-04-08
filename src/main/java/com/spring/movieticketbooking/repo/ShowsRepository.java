@@ -7,13 +7,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.spring.movieticketbooking.entity.Movie;
+import com.spring.movieticketbooking.entity.Shows;
 
 
 @Repository
-public interface MovieRepository extends JpaRepository<Movie, Integer> {
+public interface ShowsRepository extends JpaRepository<Shows, Integer> {
+	
 
-	@Query("SELECT m FROM Movies m WHERE LOWER(m.genre) like %:key% OR LOWER(m.movieTitle) like %:key%")
-	public List<Movie> searchMoviesByKeyword(@Param("key") String keyword);
+	@Query("SELECT s FROM Shows s WHERE LOWER(s.movie.movieTitle) like %:movieTitle%")
+	public List<Shows> searchShowsByTitle(@Param("movieTitle")String movieTitle);
+
 
 }

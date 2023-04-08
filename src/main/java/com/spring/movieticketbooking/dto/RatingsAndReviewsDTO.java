@@ -1,15 +1,24 @@
 
 package com.spring.movieticketbooking.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 public class RatingsAndReviewsDTO {
 
-	private Integer id;
-    private Integer customerId;
-    private Float rating;
-    private String review;
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class RatingDTO {
+	private int  movieId;
 
+	private Double rating;
+
+	private String review;
+
+
+}
 
 }
